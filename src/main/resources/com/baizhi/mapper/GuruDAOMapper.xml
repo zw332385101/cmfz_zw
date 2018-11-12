@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.baizhi.dao.GuruDAO">
+
+    <select id="queryByGuruAll" resultType="com.baizhi.entity.Guru">
+  select * from guru
+</select>
+    <insert id="insertGuru">
+insert into  guru values (#{id},#{name},#{headPic},#{sex})
+</insert>
+    <delete id="deleteGuru">
+    delete from guru where id=#{id}
+</delete>
+    <update id="updateGuru">
+    update  guru set id=#{id},name=#{name},headPic=#{headPic},sex=#{sex} where id=#{id}
+    </update>
+    <select id="queryByOne" resultType="com.baizhi.entity.Guru">
+    select * from guru where id=#{id}
+    </select>
+</mapper>

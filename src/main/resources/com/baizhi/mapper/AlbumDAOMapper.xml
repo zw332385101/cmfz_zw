@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.baizhi.dao.AlbumDAO">
+
+    <resultMap id="TypeRst" type="com.baizhi.entity.Album">
+        <id property="id" column="pid"/>
+        <result property="title" column="ptitle"/>
+        <result property="publishDate" column="publishDate"/>
+        <result property="count" column="count"/>
+        <result property="coverImg" column="coverImg"/>
+        <result property="star" column="star"/>
+        <collection property="children" ofType="com.baizhi.entity.Chapter">
+            <id property="chapter_id" column="cid"/>
+            <result property="title" column="ctitle"/>
+            <result property="size" column="size"/>
+            <result property="duration" column="duration"/>
+            <result property="downPath" column="downPath"/>
+            <result property="uploadTime" column="uploadTime"/>
+        </collection>
+    </resultMap>
+    <select id="queryByAlbumAll" resultMap="TypeRst">
+select p.id pid,p.title ptitle,p.publishDate,p.count,p.coverImg,p.star,
+				c.chapter_id cid,c.title ctitle,c.size,c.duration,c.downPath,c.uploadTime
+from album p join chapter c
+on p.id=c.album_id
+    </select>
+
+
+    <insert id="insertAlbum" parameterType="com.baizhi.entity.Album">
+      insert into album values (#{id},#{title},#{publishDate},#{count},#{coverImg},#{star},#{author},#{broadCast},#{brief})
+    </insert>
+
+    <select id="queryByAlbum" resultType="com.baizhi.entity.Album">
+    select * from album where id=#{id}
+    </select>
+</mapper>

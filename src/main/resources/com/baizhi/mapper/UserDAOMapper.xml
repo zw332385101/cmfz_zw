@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.baizhi.dao.UserDAO">
+
+    <select id="queryByUserAll" resultType="com.baizhi.entity.User">
+  select * from user
+</select>
+ <insert id="insertUser">
+insert into  user values (#{id},#{phoneNum},#{username},#{password},#{salt},#{province},#{city},#{nickNake},#{gender},#{sign},#{headPic},#{status},#{creat_date})
+</insert>
+    <delete id="deleteUser">
+    delete from user where id=#{id}
+</delete>
+    <update id="updateUser">
+    update  user set id=#{id},phoneNum=#{phoneNum},username=#{username},password=#{password},salt=#{salt},city=#{city},province=#{province},nickNake=#{nickNake},gender=#{gender},sign=#{sign},headPic=#{headPic},status=#{status},creat_date=#{creat_date} where id=#{id}
+    </update>
+    <select id="queryByOne" resultType="com.baizhi.entity.User">
+    select * from user where id=#{id}
+    </select>
+</mapper>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.baizhi.dao.AdminDao">
+
+    <select id="queryBynameAndPasspwrd" resultType="com.baizhi.entity.Admin">
+        select id,name,password from admin where name=#{name}and password=#{password}
+    </select>
+
+    <select id="queryByName" resultType="java.lang.String">
+        select id from admin where name=#{name}
+    </select>
+
+    <update id="updateAdmin">
+        update  admin set password=#{password} where id=#{id}
+    </update>
+    <select id="queryOne" resultType="com.baizhi.entity.Admin">
+    select id,name,password  from admin where id=#{id}
+    </select>
+</mapper>
