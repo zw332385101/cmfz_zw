@@ -18,6 +18,7 @@ public class AdminController {
 
     @RequestMapping("/login")
     public String login(Admin admin, HttpServletRequest request, String code){
+        System.out.println("第一次");
         boolean bynameAndPasspwrd = adminService.findBynameAndPasspwrd(admin);
         HttpSession session = request.getSession();
         String validationCode = (String) session.getAttribute("validationCode");
